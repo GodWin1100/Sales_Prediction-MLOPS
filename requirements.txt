@@ -1,0 +1,12 @@
+numpy
+pandas
+scikit-learn
+tqdm
+black
+flake8
+mypy
+tox
+matplotlib
+seaborn
+plotly
+-e .

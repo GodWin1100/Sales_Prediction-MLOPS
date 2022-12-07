@@ -3,7 +3,7 @@
 import sys
 
 
-class SalespredictionException(Exception):
+class SalesPredictionException(Exception):
     def __init__(self, error_message: Exception):
         """Return error message with filename, line number where it was captured and message of the exception.
         Nested captured traceback included.
@@ -12,7 +12,7 @@ class SalespredictionException(Exception):
             error_message (Exception): exception object
         """
         super().__init__(error_message)
-        self.error_message = SalespredictionException.__get_detailed_error_message(error_message)
+        self.error_message = SalesPredictionException.__get_detailed_error_message(error_message)
 
     @staticmethod
     def __get_detailed_error_message(error_message: Exception) -> str:
@@ -36,4 +36,4 @@ class SalespredictionException(Exception):
         return self.error_message
 
     def __repr__(self) -> str:
-        return SalespredictionException.__name__.str()
+        return SalesPredictionException.__name__.str()

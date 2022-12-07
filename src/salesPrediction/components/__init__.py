@@ -1,0 +1,1 @@
+from salesPrediction.components.data_ingestion import DataIngestion
