@@ -1,0 +1,16 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/salesPrediction/pipeline/s01_data_ingestion.py
+    deps:
+    - path: configs/config.yaml
+      md5: 95c98b077cdf4f02fb356e03a0c207c9
+      size: 1032
+    - path: src/salesPrediction/pipeline/s01_data_ingestion.py
+      md5: e35981dc9d80c10c395510f4844bd3df
+      size: 781
+    outs:
+    - path: artifacts/data_ingestion
+      md5: e78ad2b4c0ee4d5ea32c128782800cab.dir
+      size: 1711625
+      nfiles: 3

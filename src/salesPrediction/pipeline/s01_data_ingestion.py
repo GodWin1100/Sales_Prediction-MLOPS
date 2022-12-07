@@ -1,6 +1,6 @@
 from salesPrediction.components import DataIngestion
 from salesPrediction.config import ConfigurationManager
-from salesPrediction import logger
+from salesPrediction.logger import logger
 from salesPrediction.exception import SalesPredictionException
 
 STAGE_NAME = "Data Ingestion Stage"
