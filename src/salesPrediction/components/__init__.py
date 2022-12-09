@@ -1,1 +1,2 @@
 from salesPrediction.components.data_ingestion import DataIngestion
+from salesPrediction.components.data_validation import DataValidation

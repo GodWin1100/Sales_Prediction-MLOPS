@@ -1,13 +1,27 @@
 columns:
-  - Item_Identifier: object
-  - Item_Weight: float64
-  - Item_Fat_Content: object
-  - Item_Visibility: float64
-  - Item_Type: object
-  - Item_MRP: float64
-  - Outlet_Identifier: object
-  - Outlet_Establishment_Year: int64
-  - Outlet_Size: object
-  - Outlet_Location_Type: object
-  - Outlet_Type: object
-  - Item_Outlet_Sales: float64
+  - Item_Identifier
+  - Item_Weight
+  - Item_Fat_Content
+  - Item_Visibility
+  - Item_Type
+  - Item_MRP
+  - Outlet_Identifier
+  - Outlet_Establishment_Year
+  - Outlet_Size
+  - Outlet_Location_Type
+  - Outlet_Type
+  - Item_Outlet_Sales
+
+columns_datatype:
+  Item_Identifier: object
+  Item_Weight: float64
+  Item_Fat_Content: object
+  Item_Visibility: float64
+  Item_Type: object
+  Item_MRP: float64
+  Outlet_Identifier: object
+  Outlet_Establishment_Year: int64
+  Outlet_Size: object
+  Outlet_Location_Type: object
+  Outlet_Type: object
+  Item_Outlet_Sales: float64

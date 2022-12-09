@@ -1,6 +1,7 @@
 # ? traceback module provides deep traceback of the exception where it occurred
 # https://stackoverflow.com/a/47659065
 import sys
+from salesPrediction.logger import logger
 
 
 class SalesPredictionException(Exception):
@@ -30,6 +31,7 @@ class SalesPredictionException(Exception):
         except_line_no = exec_tb.tb_frame.f_lineno  # ! This will give line no. of except block
         file_name = exec_tb.tb_frame.f_code.co_filename
         error_detail = f"\n\tError occurred in:\n\t{file_name}: [{line_no}],\n\tError captured at [{except_line_no}],\n\tError Message: {error_message}"
+        logger.error(error_detail)
         return error_detail
 
     def __str__(self) -> str:

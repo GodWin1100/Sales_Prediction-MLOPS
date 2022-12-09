@@ -1,8 +1,8 @@
 from pathlib import Path
 from salesPrediction.constants import *
+from salesPrediction.entity import *
 from salesPrediction.logger import logger
 from salesPrediction.exception import SalesPredictionException
-from salesPrediction.entity import DataIngestionConfig
 from salesPrediction.utils import read_yaml, create_directories
 
 
@@ -23,5 +23,21 @@ class ConfigurationManager:
             )
             logger.info(f"Data Ingestion Config: {data_ingestion_config}")
             return data_ingestion_config
+        except Exception as e:
+            raise SalesPredictionException(e) from e
+
+    def get_data_validation_config(self) -> DataValidationConfig:
+        try:
+            config = self.config[DATA_VALIDATION_KEY]
+            create_directories([config[DATA_VALIDATION_ROOT_DIR]])
+            data_validation_config = DataValidationConfig(
+                root_dir=Path(config[DATA_VALIDATION_ROOT_DIR]),
+                data_file=Path(config[DATA_VALIDATION_DATA_FILE]),
+                schema_file=Path(config[DATA_VALIDATION_SCHEMA_FILE]),
+                report_file=Path(config[DATA_VALIDATION_REPORT_FILE]),
+                report_page=Path(config[DATA_VALIDATION_REPORT_PAGE]),
+            )
+            logger.info(f"Data Validation Config: {data_validation_config}")
+            return data_validation_config
         except Exception as e:
             raise SalesPredictionException(e) from e

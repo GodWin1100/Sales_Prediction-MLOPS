@@ -6,3 +6,16 @@ stages:
       - configs/config.yaml
     outs:
       - artifacts/data_ingestion
+
+  data_validation:
+    cmd: python src/salesPrediction/pipeline/s02_data_validation.py
+    deps:
+      - src/salesPrediction/pipeline/s02_data_validation.py
+      - artifacts/data_ingestion/raw/Train.csv
+      - configs/config.yaml
+      - configs/schema.yaml
+    outs:
+      - artifacts/data_validation
+    # metrics:
+    #   - artifacts/data_validation/report.json:
+    #       cache: false

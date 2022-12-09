@@ -4,8 +4,8 @@ stages:
     cmd: python src/salesPrediction/pipeline/s01_data_ingestion.py
     deps:
     - path: configs/config.yaml
-      md5: 95c98b077cdf4f02fb356e03a0c207c9
-      size: 1032
+      md5: 8ddfc1b6bdce956e19e92e2db9b6efbc
+      size: 1288
     - path: src/salesPrediction/pipeline/s01_data_ingestion.py
       md5: e35981dc9d80c10c395510f4844bd3df
       size: 781
@@ -14,3 +14,23 @@ stages:
       md5: e78ad2b4c0ee4d5ea32c128782800cab.dir
       size: 1711625
       nfiles: 3
+  data_validation:
+    cmd: python src/salesPrediction/pipeline/s02_data_validation.py
+    deps:
+    - path: artifacts/data_ingestion/raw/Train.csv
+      md5: e0df0a56f3f03c084c828b29aaa0f314
+      size: 869537
+    - path: configs/config.yaml
+      md5: 8ddfc1b6bdce956e19e92e2db9b6efbc
+      size: 1288
+    - path: configs/schema.yaml
+      md5: c4d2e3d0ce97c636101bb5127b5ee6ae
+      size: 600
+    - path: src/salesPrediction/pipeline/s02_data_validation.py
+      md5: c7641fea367478ade18ac5262ad88a55
+      size: 861
+    outs:
+    - path: artifacts/data_validation
+      md5: f6e049cc1af4a7e4abd4e5d79fc6b00e.dir
+      size: 3613834
+      nfiles: 2
