@@ -17,3 +17,12 @@ class DataValidationConfig:
     schema_file: Path
     report_file: Path
     report_page: Path
+
+
+@dataclass(frozen=True)
+class DataPreprocessingConfig:
+    root_dir: Path
+    raw_data_file: Path
+    schema_file: Path
+    preprocessed_data_file: Path
+    preprocessing_obj: Path

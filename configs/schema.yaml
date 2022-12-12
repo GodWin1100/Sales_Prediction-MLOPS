@@ -25,3 +25,20 @@ columns_datatype:
   Outlet_Location_Type: object
   Outlet_Type: object
   Item_Outlet_Sales: float64
+
+numerical_columns:
+  - 1
+  - 3
+  - 5
+  - 7
+
+ordinal_columns:
+  - 0
+
+ohe_columns:
+  - 2
+  - 4
+  - 6
+  - 8
+  - 9
+  - 10

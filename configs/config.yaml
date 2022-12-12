@@ -2,7 +2,7 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_url: https://storage.googleapis.com/kaggle-data-sets/9961/14084/bundle/archive.zip?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gcp-kaggle-com%40kaggle-161607.iam.gserviceaccount.com%2F20221207%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221207T175319Z&X-Goog-Expires=259200&X-Goog-SignedHeaders=host&X-Goog-Signature=03a57b79719a9726d231ed9cfb4f01cfd7e691756aa8acd745f2a5729b0da92615f117ea432aad9fee6fc057859a3022e6e25067d10dee240a0d351fbb6adacd9f3fac283e8e5e2f585c466915b9db9061866eb535eb8513165e710ff14b91c579e5d7f78fd7c809125a5b404694d5cf7da86b0223ca9e2a42e16398e57d97f5cab8f6020be0346592674852cbdfe52c774e9cabd6fbfe40b2da516a637d87fc06eec960a5b04faec6ca5dea57e0f27a7325b63d94bb3644451dfe32415bb9c5148eedfdb8ddbb688dd728e83de8d3ccc531bb6d1745eb570ebcd56fc02b87c07d5c4072fc050b5795d51a1caebe543da71af5356032bd16df28e35871fa4062
+  source_url: https://storage.googleapis.com/kaggle-data-sets/9961/14084/bundle/archive.zip?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gcp-kaggle-com%40kaggle-161607.iam.gserviceaccount.com%2F20221212%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221212T202830Z&X-Goog-Expires=259200&X-Goog-SignedHeaders=host&X-Goog-Signature=5df00ffef7df20582fcb58591d4792b9d78230c6ae96d28319cf4b89b2bdf3f8ab83db037b90a226dc34318eabe25515d1321d079fa43ada0665c701857b6d8bb9d5e669c6620587c3f18784220c1335410da93738ea982100d76d1e2b66a2f4fbb2b1d7c4af363bb5ec8fad0ac26fad9a0b549102071d5b9dc628b94e7b299dbb63a6619ec0b1c79a871e937f718a825d0718edfd8c8f61144955a5feb77400b99bf94303eb3a02ec8ce86e05924c8f703592c057adf1b6a40a7979e596cd61f5de5c5b295d92b3b801c88e7b7dc8ed7495e002bc2d3b8fac78219bf8afdb8abe3793b3e1afb058cc09851dc02543cfd5ffd5c6fbb1b5d382c7218403b86707
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion/raw
 
@@ -12,3 +12,10 @@ data_validation:
   schema_file: configs/schema.yaml
   report_file: artifacts/data_validation/report.json
   report_page: artifacts/data_validation/report.html
+
+data_preprocessing:
+  root_dir: artifacts/data_preprocessing
+  raw_data_file: artifacts/data_ingestion/raw/Train.csv
+  schema_file: configs/schema.yaml
+  preprocessed_data_file: artifacts/data_preprocessing/Train_preprocessed.npy
+  preprocessing_obj: artifacts/data_preprocessing/preprocessed.pkl

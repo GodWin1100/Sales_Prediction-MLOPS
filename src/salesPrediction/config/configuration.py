@@ -41,3 +41,19 @@ class ConfigurationManager:
             return data_validation_config
         except Exception as e:
             raise SalesPredictionException(e) from e
+
+    def get_data_preprocessing_config(self) -> DataPreprocessingConfig:
+        try:
+            config = self.config[DATA_PREPROCESSING_KEY]
+            create_directories([config[DATA_PREPROCESSING_ROOT_DIR]])
+            data_preprocessing_config = DataPreprocessingConfig(
+                root_dir=Path(config[DATA_PREPROCESSING_ROOT_DIR]),
+                raw_data_file=Path(config[DATA_PREPROCESSING_RAW_DATA_FILE]),
+                schema_file=Path(config[DATA_PREPROCESSING_SCHEMA_FILE]),
+                preprocessed_data_file=Path(config[DATA_PREPROCESSING_PREPROCESSED_DATA_FILE]),
+                preprocessing_obj=Path(config[DATA_PREPROCESSING_PREPROCESSING_OBJ]),
+            )
+            logger.info(f"Data Preprocessing Config: {data_preprocessing_config}")
+            return data_preprocessing_config
+        except Exception as e:
+            raise SalesPredictionException(e) from e
