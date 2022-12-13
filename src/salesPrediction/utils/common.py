@@ -52,6 +52,14 @@ def store_numpy(file_path: Path, np_obj: np.ndarray) -> None:
         raise SalesPredictionException(e) from e
 
 
+def load_numpy(file_path: Path) -> np.ndarray:
+    try:
+        data_arr = np.load(file_path)
+        return data_arr
+    except Exception as e:
+        raise SalesPredictionException(e) from e
+
+
 def save_bin(file_path: Path, obj) -> None:
     try:
         with open(file_path, "wb") as f:

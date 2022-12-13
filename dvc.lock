@@ -4,8 +4,8 @@ stages:
     cmd: python src/salesPrediction/pipeline/s01_data_ingestion.py
     deps:
     - path: configs/config.yaml
-      md5: fb58fd0b571179d5a610637bf91e3a0d
-      size: 1593
+      md5: d24e851f113e6bfa90e4ea6dcd97ffec
+      size: 1814
     - path: src/salesPrediction/pipeline/s01_data_ingestion.py
       md5: e35981dc9d80c10c395510f4844bd3df
       size: 781
@@ -21,8 +21,8 @@ stages:
       md5: e0df0a56f3f03c084c828b29aaa0f314
       size: 869537
     - path: configs/config.yaml
-      md5: fb58fd0b571179d5a610637bf91e3a0d
-      size: 1593
+      md5: d24e851f113e6bfa90e4ea6dcd97ffec
+      size: 1814
     - path: configs/schema.yaml
       md5: 7128f27cde6862a71a5b4cbb1f310258
       size: 736
@@ -31,7 +31,7 @@ stages:
       size: 861
     outs:
     - path: artifacts/data_validation
-      md5: ea1c3bf3cb0675730ada891b0b2cb962.dir
+      md5: 468facac6ec5b24497050ffd5454a16f.dir
       size: 3613835
       nfiles: 2
   data_preprocessing:
@@ -41,8 +41,8 @@ stages:
       md5: e0df0a56f3f03c084c828b29aaa0f314
       size: 869537
     - path: configs/config.yaml
-      md5: fb58fd0b571179d5a610637bf91e3a0d
-      size: 1593
+      md5: d24e851f113e6bfa90e4ea6dcd97ffec
+      size: 1814
     - path: configs/schema.yaml
       md5: 7128f27cde6862a71a5b4cbb1f310258
       size: 736
@@ -54,5 +54,26 @@ stages:
       md5: 60c68a3c5c42fa6de38382ff67da086f
       size: 2795672
     - path: artifacts/data_preprocessing/preprocessed.pkl
-      md5: 3f68b2e2f86929040ffaa61b6cdc1dcd
-      size: 16124
+      md5: 4895075c439a729d4ccb08344ad9c769
+      size: 15719
+  model_training:
+    cmd: python src/salesPrediction/pipeline/s04_model_training.py
+    deps:
+    - path: artifacts/data_preprocessing/Train_preprocessed.npy
+      md5: 60c68a3c5c42fa6de38382ff67da086f
+      size: 2795672
+    - path: configs/config.yaml
+      md5: d24e851f113e6bfa90e4ea6dcd97ffec
+      size: 1814
+    - path: src/salesPrediction/pipeline/s04_model_training.py
+      md5: 453439720cfc245448dfca042b30b06c
+      size: 752
+    params:
+      configs/params.yaml:
+        learning_rate: 0.1
+        max_depth: 5
+        n_estimators: 50
+    outs:
+    - path: artifacts/model_training/model.pkl
+      md5: c9492f02a4be21e1fbd5534733cd3a3c
+      size: 137970

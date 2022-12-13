@@ -57,3 +57,18 @@ class ConfigurationManager:
             return data_preprocessing_config
         except Exception as e:
             raise SalesPredictionException(e) from e
+
+    def get_model_training_config(self) -> ModelTrainingConfig:
+        try:
+            config = self.config[MODEL_TRAINING_KEY]
+            create_directories([config[MODEL_TRAINING_ROOT_DIR]])
+            model_training_config = ModelTrainingConfig(
+                root_dir=Path(config[MODEL_TRAINING_ROOT_DIR]),
+                model_file=Path(config[MODEL_TRAINING_MODEL_FILE]),
+                preprocessed_data_file=Path(config[MODEL_TRAINING_PREPROCESSED_DATA_FILE]),
+                param_file=Path(config[MODEL_TRAINING_PARAM_FILE]),
+            )
+            logger.info(f"Model Training Config: {model_training_config}")
+            return model_training_config
+        except Exception as e:
+            raise SalesPredictionException(e) from e

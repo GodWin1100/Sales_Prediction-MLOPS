@@ -26,3 +26,10 @@ class DataPreprocessingConfig:
     schema_file: Path
     preprocessed_data_file: Path
     preprocessing_obj: Path
+
+@dataclass(frozen=True)
+class ModelTrainingConfig:
+    root_dir: Path
+    model_file: Path
+    preprocessed_data_file: Path
+    param_file:Path

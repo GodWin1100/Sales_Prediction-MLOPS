@@ -30,3 +30,17 @@ stages:
     outs:
       - artifacts/data_preprocessing/Train_preprocessed.npy
       - artifacts/data_preprocessing/preprocessed.pkl
+
+  model_training:
+    cmd: python src/salesPrediction/pipeline/s04_model_training.py
+    deps:
+      - src/salesPrediction/pipeline/s04_model_training.py
+      - artifacts/data_preprocessing/Train_preprocessed.npy
+      - configs/config.yaml
+    outs:
+      - artifacts/model_training/model.pkl
+    params:
+      - configs/params.yaml:
+          - learning_rate
+          - max_depth
+          - n_estimators

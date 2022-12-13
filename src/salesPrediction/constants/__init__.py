@@ -28,3 +28,10 @@ DATA_PREPROCESSING_RAW_DATA_FILE = "raw_data_file"
 DATA_PREPROCESSING_SCHEMA_FILE = "schema_file"
 DATA_PREPROCESSING_PREPROCESSED_DATA_FILE = "preprocessed_data_file"
 DATA_PREPROCESSING_PREPROCESSING_OBJ = "preprocessing_obj"
+
+# Model Training config key
+MODEL_TRAINING_KEY = "model_training"
+MODEL_TRAINING_ROOT_DIR = "root_dir"
+MODEL_TRAINING_MODEL_FILE = "model_file"
+MODEL_TRAINING_PREPROCESSED_DATA_FILE = "preprocessed_data_file"
+MODEL_TRAINING_PARAM_FILE = "param_file"

@@ -19,3 +19,9 @@ data_preprocessing:
   schema_file: configs/schema.yaml
   preprocessed_data_file: artifacts/data_preprocessing/Train_preprocessed.npy
   preprocessing_obj: artifacts/data_preprocessing/preprocessed.pkl
+
+model_training:
+  root_dir: artifacts/model_training
+  model_file: artifacts/model_training/model.pkl
+  preprocessed_data_file: artifacts/data_preprocessing/Train_preprocessed.npy
+  param_file: configs/params.yaml
