@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
@@ -40,15 +41,15 @@ class DataPreprocessing:
                     ("ordinal", ordinal_pipeline, self.schema["ordinal_columns"]),
                     ("ohe", ohe_pipeline, self.schema["ohe_columns"]),
                 ],
-                remainder="passthrough",
             )
-            self.transformer.fit(self.df)
+            self.transformer.fit(self.df.iloc[:,:-1].values)
         except Exception as e:
             raise SalesPredictionException(e) from e
 
     def transform_save_data(self):
         try:
-            transformed_data = self.transformer.transform(self.df)
+            transformed_data = self.transformer.transform(self.df.iloc[:,:-1])
+            transformed_data=np.column_stack((transformed_data,self.df.iloc[:,-1]))
             store_numpy(self.config.preprocessed_data_file, transformed_data)
         except Exception as e:
             raise SalesPredictionException(e) from e
