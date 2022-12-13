@@ -30,6 +30,13 @@ def read_yaml(yaml_path: Path) -> dict:
     except Exception as e:
         raise SalesPredictionException(e) from e
 
+def save_json(file_path:Path,content:dict)->None:
+    try:
+        with open(file_path) as f:
+            json.dump(content,f,indent=4)
+        logger.info(f"Json file created: {file_path}")
+    except Exception as e:
+        raise SalesPredictionException(e) from e
 
 def create_directories(dir_paths: list, verbose=True):
     for path in dir_paths:
@@ -65,5 +72,14 @@ def save_bin(file_path: Path, obj) -> None:
         with open(file_path, "wb") as f:
             pickle.dump(obj, f)
         logger.info(f"Saved binary object at {file_path}")
+    except Exception as e:
+        raise SalesPredictionException(e) from e
+
+def load_bin(file_path:Path):
+    try:
+        with open(file_path,'rb') as f:
+            obj=pickle.load(f)
+        logger.info(f"Object loaded: {file_path}")
+        return obj
     except Exception as e:
         raise SalesPredictionException(e) from e

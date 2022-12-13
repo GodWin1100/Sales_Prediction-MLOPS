@@ -72,3 +72,19 @@ class ConfigurationManager:
             return model_training_config
         except Exception as e:
             raise SalesPredictionException(e) from e
+
+    def get_model_predict_config(self) -> ModelPredictConfig:
+        try:
+            config = self.config[MODEL_PREDICT_KEY]
+            create_directories([config[MODEL_PREDICT_ROOT_DIR]])
+            model_predict_config = ModelPredictConfig(
+                root_dir=Path(config[MODEL_PREDICT_ROOT_DIR]),
+                model_file=Path(config[MODEL_PREDICT_MODEL_FILE]),
+                test_data_file=Path(config[MODEL_PREDICT_TEST_DATA_FILE]),
+                predict_file=config[MODEL_PREDICT_PREDICT_FILE],
+                preprocessing_obj=config[MODEL_PREDICT_PREPROCESSING_OBJ],
+            )
+            logger.info(f"Model Predict Config: {model_predict_config}")
+            return model_predict_config
+        except Exception as e:
+            raise SalesPredictionException(e) from e

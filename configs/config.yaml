@@ -25,3 +25,10 @@ model_training:
   model_file: artifacts/model_training/model.pkl
   preprocessed_data_file: artifacts/data_preprocessing/Train_preprocessed.npy
   param_file: configs/params.yaml
+
+model_predict:
+  root_dir: artifacts/model_predict
+  model_file: artifacts/model_training/model.pkl
+  test_data_file: artifacts/data_ingestion/raw/Test.csv
+  predict_file: artifacts/model_predict/predict.csv
+  preprocessing_obj: artifacts/data_preprocessing/preprocessed.pkl

@@ -27,9 +27,19 @@ class DataPreprocessingConfig:
     preprocessed_data_file: Path
     preprocessing_obj: Path
 
+
 @dataclass(frozen=True)
 class ModelTrainingConfig:
     root_dir: Path
     model_file: Path
     preprocessed_data_file: Path
-    param_file:Path
+    param_file: Path
+
+
+@dataclass(frozen=True)
+class ModelPredictConfig:
+    root_dir: Path
+    model_file: Path
+    test_data_file: Path
+    predict_file: Path
+    preprocessing_obj: Path

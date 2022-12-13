@@ -2,3 +2,4 @@ from salesPrediction.components.data_ingestion import DataIngestion
 from salesPrediction.components.data_validation import DataValidation
 from salesPrediction.components.data_preprocessing import DataPreprocessing
 from salesPrediction.components.model_training import ModelTraining
+from salesPrediction.components.model_predict import ModelPredict
