@@ -1,0 +1,4 @@
+[core]
+    remote = origin
+['remote "origin"']
+    url = https://dagshub.com/GodWin1100/Sales_Prediction-MLOPS.dvc
