@@ -34,6 +34,7 @@ class ModelTrainingConfig:
     model_file: Path
     preprocessed_data_file: Path
     param_file: Path
+    score_file: Path
 
 
 @dataclass(frozen=True)

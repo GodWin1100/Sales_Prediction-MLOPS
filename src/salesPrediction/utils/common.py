@@ -1,11 +1,13 @@
-import os
-import yaml
 import json
-import numpy as np
+import os
 import pickle
 from pathlib import Path
-from salesPrediction.logger import logger
+
+import numpy as np
+import yaml
+
 from salesPrediction.exception import SalesPredictionException
+from salesPrediction.logger import logger
 
 
 def read_yaml(yaml_path: Path) -> dict:
@@ -30,13 +32,15 @@ def read_yaml(yaml_path: Path) -> dict:
     except Exception as e:
         raise SalesPredictionException(e) from e
 
-def save_json(file_path:Path,content:dict)->None:
+
+def save_json(file_path: Path, content: dict) -> None:
     try:
-        with open(file_path) as f:
-            json.dump(content,f,indent=4)
+        with open(file_path, "w") as f:
+            json.dump(content, f, indent=4)
         logger.info(f"Json file created: {file_path}")
     except Exception as e:
         raise SalesPredictionException(e) from e
+
 
 def create_directories(dir_paths: list, verbose=True):
     for path in dir_paths:
@@ -75,10 +79,11 @@ def save_bin(file_path: Path, obj) -> None:
     except Exception as e:
         raise SalesPredictionException(e) from e
 
-def load_bin(file_path:Path):
+
+def load_bin(file_path: Path):
     try:
-        with open(file_path,'rb') as f:
-            obj=pickle.load(f)
+        with open(file_path, "rb") as f:
+            obj = pickle.load(f)
         logger.info(f"Object loaded: {file_path}")
         return obj
     except Exception as e:

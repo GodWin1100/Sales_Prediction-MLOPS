@@ -25,6 +25,7 @@ model_training:
   model_file: artifacts/model_training/model.pkl
   preprocessed_data_file: artifacts/data_preprocessing/Train_preprocessed.npy
   param_file: configs/params.yaml
+  score_file: scores.json
 
 model_predict:
   root_dir: artifacts/model_predict

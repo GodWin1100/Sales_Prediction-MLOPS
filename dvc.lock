@@ -4,8 +4,8 @@ stages:
     cmd: python src/salesPrediction/pipeline/s01_data_ingestion.py
     deps:
     - path: configs/config.yaml
-      md5: d24e851f113e6bfa90e4ea6dcd97ffec
-      size: 1814
+      md5: d1a66f2f4731d5fdeb1ba26412ceae8e
+      size: 2124
     - path: src/salesPrediction/pipeline/s01_data_ingestion.py
       md5: e35981dc9d80c10c395510f4844bd3df
       size: 781
@@ -21,8 +21,8 @@ stages:
       md5: e0df0a56f3f03c084c828b29aaa0f314
       size: 869537
     - path: configs/config.yaml
-      md5: d24e851f113e6bfa90e4ea6dcd97ffec
-      size: 1814
+      md5: d1a66f2f4731d5fdeb1ba26412ceae8e
+      size: 2124
     - path: configs/schema.yaml
       md5: 7128f27cde6862a71a5b4cbb1f310258
       size: 736
@@ -31,7 +31,7 @@ stages:
       size: 861
     outs:
     - path: artifacts/data_validation
-      md5: 468facac6ec5b24497050ffd5454a16f.dir
+      md5: bacae6d4f777a55d24b59459e78c0bee.dir
       size: 3613835
       nfiles: 2
   data_preprocessing:
@@ -41,8 +41,8 @@ stages:
       md5: e0df0a56f3f03c084c828b29aaa0f314
       size: 869537
     - path: configs/config.yaml
-      md5: d24e851f113e6bfa90e4ea6dcd97ffec
-      size: 1814
+      md5: d1a66f2f4731d5fdeb1ba26412ceae8e
+      size: 2124
     - path: configs/schema.yaml
       md5: 7128f27cde6862a71a5b4cbb1f310258
       size: 736
@@ -63,11 +63,11 @@ stages:
       md5: 60c68a3c5c42fa6de38382ff67da086f
       size: 2795672
     - path: configs/config.yaml
-      md5: d24e851f113e6bfa90e4ea6dcd97ffec
-      size: 1814
+      md5: d1a66f2f4731d5fdeb1ba26412ceae8e
+      size: 2124
     - path: src/salesPrediction/pipeline/s04_model_training.py
-      md5: 453439720cfc245448dfca042b30b06c
-      size: 752
+      md5: 841f7f08ad04b6ccf5ec695f95b4ff94
+      size: 845
     params:
       configs/params.yaml:
         learning_rate: 0.1
@@ -77,3 +77,6 @@ stages:
     - path: artifacts/model_training/model.pkl
       md5: c9492f02a4be21e1fbd5534733cd3a3c
       size: 137970
+    - path: scores.json
+      md5: fddbdf5839cf24109d03fa83c793cc58
+      size: 96

@@ -1,9 +1,10 @@
 from pathlib import Path
+
 from salesPrediction.constants import *
 from salesPrediction.entity import *
-from salesPrediction.logger import logger
 from salesPrediction.exception import SalesPredictionException
-from salesPrediction.utils import read_yaml, create_directories
+from salesPrediction.logger import logger
+from salesPrediction.utils import create_directories, read_yaml
 
 
 class ConfigurationManager:
@@ -67,6 +68,7 @@ class ConfigurationManager:
                 model_file=Path(config[MODEL_TRAINING_MODEL_FILE]),
                 preprocessed_data_file=Path(config[MODEL_TRAINING_PREPROCESSED_DATA_FILE]),
                 param_file=Path(config[MODEL_TRAINING_PARAM_FILE]),
+                score_file=Path(config[MODEL_TRAINING_SCORE_FILE]),
             )
             logger.info(f"Model Training Config: {model_training_config}")
             return model_training_config

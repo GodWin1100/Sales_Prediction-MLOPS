@@ -35,6 +35,7 @@ MODEL_TRAINING_ROOT_DIR = "root_dir"
 MODEL_TRAINING_MODEL_FILE = "model_file"
 MODEL_TRAINING_PREPROCESSED_DATA_FILE = "preprocessed_data_file"
 MODEL_TRAINING_PARAM_FILE = "param_file"
+MODEL_TRAINING_SCORE_FILE = "score_file"
 
 # Model Evaluation config key
 MODEL_PREDICT_KEY = "model_predict"

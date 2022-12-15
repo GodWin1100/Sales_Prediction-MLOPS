@@ -44,3 +44,6 @@ stages:
           - learning_rate
           - max_depth
           - n_estimators
+    metrics:
+      - scores.json:
+          cache: false
