@@ -1,11 +1,15 @@
 import pickle
 from enum import Enum
+from io import StringIO
 
 import pandas as pd
-from fastapi import FastAPI
+
+# import uvicorn
+from fastapi import FastAPI, UploadFile
 from fastapi.encoders import jsonable_encoder
+from fastapi.exceptions import HTTPException
 from fastapi.responses import RedirectResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from sklearn.pipeline import Pipeline
 
 
@@ -21,12 +25,12 @@ class Outlet_Size(str, Enum):
 
 
 class Feature(BaseModel):
-    item_identifier: str
+    item_identifier: str = Field(max_length=6)
     item_weight: float
     item_fat_content: Item_Fat_Content
     item_visibility: float
     item_type: str
-    item_mrp: float
+    item_mrp: float = Field(gt=0, description="MRP needs to be greater than 0", title=" MRP of product")
     outlet_identifier: str
     outlet_establishment_year: float
     outlet_size: Outlet_Size
@@ -35,13 +39,19 @@ class Feature(BaseModel):
 
 
 def load_bin(file_path):
-    print(file_path)
     with open(file_path, "rb") as f:
         obj = pickle.load(f)
     return obj
 
 
-app = FastAPI()
+def get_model():
+    preprocessing_obj = load_bin("./preprocessed.pkl")
+    model = load_bin("./model.pkl")
+    pipeline = Pipeline(steps=[("preprocessing", preprocessing_obj), ("model", model)])
+    return pipeline
+
+
+app = FastAPI(title="Sales Price Prediction", description="## Predict sales price with XGBoost")
 
 
 @app.get("/")
@@ -50,11 +60,26 @@ def root():
 
 
 @app.post("/predict")
-async def predict_one(feature: Feature):
-    preprocessing_obj = load_bin("./preprocessed.pkl")
-    model = load_bin("./model.pkl")
-    pipeline = Pipeline(steps=[("preprocessing", preprocessing_obj), ("model", model)])
+def predict_one(feature: Feature):
+    pipeline = get_model()
     data = jsonable_encoder(feature.dict())
     df = pd.DataFrame([data])
     y_pred = pipeline.predict(df.values)
     return {"prediction": y_pred.tolist()[0]}
+
+
+@app.post("/predictcsv")
+async def predict_csv(file: UploadFile):
+    if file.content_type != "text/csv":
+        raise HTTPException(415, "Requires csv file")
+    content = await file.read()
+    df = pd.read_csv(StringIO(content.decode("utf-8")))
+    # Validate Schema with same functionality as in Validate Schema Pipeline
+    pipeline = get_model()
+    y_pred = pipeline.predict(df.values)
+    return {"prediction": y_pred.tolist()}
+
+
+# if __name__ == "__main__":
+# uvicorn.run(app=app,host="127.0.0.1",port='5000')
+# uvicorn.run(app="app:app", host="127.0.0.1", port=5000, reload=True)
