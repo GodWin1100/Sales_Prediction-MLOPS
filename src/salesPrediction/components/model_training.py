@@ -50,7 +50,7 @@ class ModelTraining:
                 y_pred = self.model.predict(self.data[:, :-1])
                 y_true = self.data[:, -1]
                 metrics = self._eval_metrics(y_true, y_pred)
-                save_json(self.config.score_file,metrics)
+                save_json(self.config.score_file, metrics)
                 tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
                 mlflow.log_params(self.params)
                 mlflow.log_metrics(metrics)
